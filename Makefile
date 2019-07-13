@@ -1,11 +1,12 @@
 # Makefile for install of develepment environment
 # command
 # > make install user=<user name> project=<project name>
-fileexists := $(shell find -name $(project))
+PROJECT_EXIST := $(shell find -name $(project))
+# USER_NAME := snst.lab
 
 install:
-	ifndef ($(name))
-		# if ($(fileexists))
+	ifndef ($(user))
+		# if ($(PROJECT_EXIST))
 			# @echo "Directory '$(name)' already exists."
 		# else
 			@make setup_package_json
@@ -17,6 +18,11 @@ install:
 setup_package_json: ./package.json
 	@sed -e "s/%USERNAME%/$(user)/g; s/%PROJECTNAME%/$(project)/g;" ./package.json > package.json.master
 	@mv package.json.master package.json
+	@make setup_gitconfig
+
+setup_gitconfig: ./.gitconfig
+	@sed -e "s/%USERNAME%/$(user)/g; s/%PROJECTNAME%/$(project)/g;" ./.gitconfig > .gitconfig.master
+	@mv .gitconfig.master .gitconfig
 	@make setup_readme_md
 
 setup_readme_md: ./README.md
@@ -37,6 +43,11 @@ setup_contributing_md: ./doc/CONTRIBUTING.md
 setup_index_html: ./index.html
 	@sed -e "s/%USERNAME%/$(user)/g; s/%PROJECTNAME%/$(project)/g;" ./index.html > index.html.master
 	@mv index.html.master  index.html
+	@make setup_cargo_toml
+
+setup_cargo_toml: ./src/public/wasm/Cargo.toml
+	@sed -e "s/%USERNAME%/$(user)/g; s/%PROJECTNAME%/$(project)/g;" ./src/public/wasm/Cargo.toml > ./src/public/wasm/Cargo.toml.master
+	@mv ./src/public/wasm/Cargo.toml.master ./src/public/wasm/Cargo.toml
 	@make download_license
 
 download_license: ./doc

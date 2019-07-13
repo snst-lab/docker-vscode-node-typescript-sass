@@ -32,14 +32,15 @@
     "webpack-node-externals": "^1.7.2"
   },
   "scripts": {
+    "start": "node build/server.js",
     "build": "webpack",
     "commit": "git add -A && git commit",
     "cancel": "git reset --soft HEAD^",
-    "push:github": "git config user.name '%USERNAME%' && git remote rm origin && git remote add origin git@github.com:%USERNAME%/%PROJECTNAME%.git && git push origin master",
+    "push:github": "git remote rm origin && git remote add origin git@github.com:%USERNAME%/%PROJECTNAME%.git && git push origin master",
     "pull:github": "git pull git@github.com:%USERNAME%/%PROJECTNAME%.git master --allow-unrelated-histories",
     "push:heroku": "heroku git:remote -a %PROJECTNAME% && git push heroku master",
     "pull:heroku": "git pull https://git.heroku.com/%PROJECTNAME%.git master --allow-unrelated-histories",
-    "wasm": "bin/wasm-pack.exe build src/public/wasm --target web"
+    "wasm": "sh -c 'bin/wasm-pack.exe build src/public/wasm --target web'"
   },
   "dependencies": {
     "app-root-path": "^2.2.1",
