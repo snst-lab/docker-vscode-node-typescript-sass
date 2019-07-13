@@ -1,12 +1,18 @@
 {
     "name": "Node.js Sample",
-    "dockerFile": "Dockerfile",
+    "dockerComposeFile": [
+        "docker-compose.yml",
+        "docker-compose.extend.yml"
+    ],
+    "service": "app",
     "appPort": 3000,
     "extensions": [
-        "dbaeumer.vscode-eslint"
+        "VisualStudioExptTeam.vscodeintellicode",
+        "dbaeumer.vscode-eslint",
+        "eg2.tslint"
     ],
     "settings": {
         "terminal.integrated.shell.linux": "/bin/bash"
     },
-    "postCreateCommand": "yarn install"
+    "shutdownAction": "none" 
 }

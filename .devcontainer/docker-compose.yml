@@ -1,0 +1,131 @@
+version: '3'
+services:
+  app:
+    build:
+       context: .
+       dockerfile: Dockerfile  
+    image: node-ts
+    container_name: node-ts
+    volumes:
+      - .:/home
+    ports:     
+       - 3000:3000
+    command: npm install
+
+
+# services:
+#   web:
+#     build: web
+#     ports:
+#       - "3000:3000"
+#     environment:
+#       - "DATABASE_HOST=db"
+#       - "DATABASE_PORT=5432"
+#       - "DATABASE_USER=＊＊＊＊＊＊＊＊"
+#       - "DATABASE_PASSWORD=＊＊＊＊＊＊＊＊"
+#     links:
+#       - db
+#     volumes:
+#       - "./app:/app" #共有フォルダの設定
+#     stdin_open: true
+
+#   db:
+#     image: postgres:10.1
+#     ports:
+#       - "5432:5432"
+#     environment:
+#       - "POSTGRES_USER=＊＊＊＊＊＊＊＊"
+#       - "POSTGRES_PASSWORD=＊＊＊＊＊＊＊＊"
+
+
+#   superset:
+#     build:
+#       context: .
+#       args:
+#         SUPERSET_VERSION: 0.20.4
+#     image: amancevice/superset
+#     ports:
+#       - 80:8088
+#     depends_on:
+#       - mysql
+#       - redis
+#     volumes:
+#       - ./superset:/etc/superset
+#     restart: always
+
+#   mysql:
+#     container_name: mysql
+#     image: mysql:5.7
+#     restart: always
+#     ports:
+#       - 3306:3306
+#     volumes:
+#       - ./mysql:/var/lib/mysql
+#     environment:
+#       MYSQL_ROOT_PASSWORD: superset
+#       MYSQL_DATABASE: superset
+#       MYSQL_USER: superset
+#       MYSQL_PASSWORD: superset
+#     command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+
+#   redis:
+#     image: redis
+#     restart: always
+#     volumes:
+#       - redis:/data
+# volumes:
+#   mysql:
+#     external: false
+#   redis:
+#     external: false
+
+
+
+# mysql:
+#   restart: always
+#   image: mysql
+#   volumes:
+#     - ./database/mysql:/var/lib/mysql
+#   environment:
+#     - MYSQL_ROOT_PASSWORD=root
+
+# postgres:
+#   restart: always
+#   image: postgres
+#   volumes:
+#     - ./data/postgresql:/var/lib/postgresql/data
+
+# redis:
+#   restart: always
+#   image: redis
+#   volumes:
+#     - ./database/redis:/data
+#   command: redis-server --appendonly yes
+
+# mongo:
+#   restart: always
+#   image: mongo
+#   volumes:
+#     - ./data/mongo:/data/db
+
+# memcached:
+#   restart: always
+#   image: memcached
+# 開発サーバからlinksでリンクすればよしなに使えます。
+
+# dev:
+#   restart: always
+#   build: .
+#   ports:
+#     - "5000:5000"
+#     - "8080:8080"
+#     - "8888:8888"
+#     - "2222:22"
+#   links:
+#     - mysql
+#     - redis
+#     - postgres
+#     - mongo
+#     - memcached
+#   volumes:
+#     - ./data/works:/home/yymm/works
