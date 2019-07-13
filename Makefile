@@ -67,3 +67,7 @@ npm_install:./package.json
 
 git_init:
 	@git init && git add -A && git commit --allow-empty -m 'first commit'  && git log
+	@make docker_compose
+
+docker_compose:.devcontainer/docker-compose.yml
+	@docker-compose -f .devcontainer/docker-compose.yml up --build

@@ -2,12 +2,12 @@ version: '3'
 services:
   app:
     build:
-       context: .
+       context: ..
        dockerfile: Dockerfile  
-    image: node-ts
-    container_name: node-ts
+    image: vscode-node-ts-sass
+    container_name: vscode-node-ts-sass
     volumes:
-      - .:/home
+      - ..:/home
     ports:     
        - 3000:3000
-    command: sleep infinity
+    command: sleep 365d
