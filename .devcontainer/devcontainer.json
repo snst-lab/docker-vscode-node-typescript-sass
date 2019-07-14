@@ -1,5 +1,5 @@
 {
-    "name": "Node.js Sample",
+    "name": "docker-vscode-node-typescript-sass",
     "dockerComposeFile": [
         "docker-compose.yml",
         "docker-compose.extend.yml"

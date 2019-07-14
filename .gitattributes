@@ -4,4 +4,5 @@
 
 doc/* linguist-vendored
 build/* linguist-vendored
+src/* linguist-vendored
 assets/* linguist-vendored

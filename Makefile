@@ -1,6 +1,11 @@
 ### Makefile for install of develepment environment
-# command
+#
+# install command
 # > make install user=<user name> project=<project name>
+#
+# rebuild command
+# > make rebuild
+
 USER_NAME := $(user)
 PROJECT_NAME := $(project)
 EXIST := $(shell ls | grep ${project})
@@ -20,6 +25,12 @@ endif
 else
 	@echo "Please specify user name."
 endif
+
+
+.PHONY: rebuild
+rebuild:
+	@make npm_install 
+
 
 setup_package_json: ./package.json
 	@sed -e "s/%USERNAME%/$(USER_NAME)/g; s/%PROJECTNAME%/$(PROJECT_NAME)/g;" ./package.json > package.json.master && \
@@ -58,15 +69,15 @@ setup_cargo_toml: ./src/public/wasm/Cargo.toml
 
 download_license: ./doc
 	curl https://www.apache.org/licenses/LICENSE-2.0.txt > ./doc/LICENSE
-	@make npm_install
-
-npm_install:./package.json
-	@echo "Now installing node modules. Please wait.." && \
-	npm install
 	@make git_init
 
 git_init:
 	@git init && git add -A && git commit --allow-empty -m 'first commit'  && git log
+	@make npm_install 
+
+npm_install:./package.json
+	@echo "Now installing node modules. Please wait.." && \
+	npm install
 	@make docker_compose
 
 docker_compose:.devcontainer/docker-compose.yml

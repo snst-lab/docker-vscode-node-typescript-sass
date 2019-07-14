@@ -15,37 +15,38 @@
   "homepage": "https://github.com/%USERNAME%/%PROJECTNAME%#readme",
   "postinstall": "./bin/node-prune.exe",
   "devDependencies": {
-    "@types/express": "^4.17.0",
-    "@types/node": "^12.6.2",
-    "browser-sync": "^2.26.3",
-    "del": "^3.0.0",
-    "gulp": "^4.0.2",
-    "gulp-plumber": "^1.2.1",
-    "gulp-sass": "^4.0.2",
-    "path": "^0.12.7",
-    "ts-loader": "^5.3.3",
-    "tslint": "^5.18.0",
-    "tslint-loader": "^3.6.0",
-    "typescript": "^3.5.3",
-    "webpack": "^4.29.0",
-    "webpack-cli": "^3.2.1",
-    "webpack-node-externals": "^1.7.2"
+    "@types/express": "",
+    "@types/node": "",
+    "browser-sync": "",
+    "del": "",
+    "gulp": "",
+    "gulp-plumber": "",
+    "gulp-sass": "",
+    "path": "",
+    "ts-loader": "",
+    "tslint": "",
+    "tslint-loader": "",
+    "typescript": "",
+    "webpack": "4.17.1", 
+    "webpack-cli": "",
+    "webpack-node-externals": ""
   },
   "scripts": {
     "start": "node build/server.js",
     "build": "webpack",
+    "wasm": "sh -c 'bin/wasm-pack.exe build src/public/wasm --target web'",
     "commit": "git add -A && git commit",
     "cancel": "git reset --soft HEAD^",
     "push:github": "git remote rm origin && git remote add origin git@github.com:%USERNAME%/%PROJECTNAME%.git && git push origin master",
     "pull:github": "git pull git@github.com:%USERNAME%/%PROJECTNAME%.git master --allow-unrelated-histories",
     "push:heroku": "heroku git:remote -a %PROJECTNAME% && git push heroku master",
     "pull:heroku": "git pull https://git.heroku.com/%PROJECTNAME%.git master --allow-unrelated-histories",
-    "wasm": "sh -c 'bin/wasm-pack.exe build src/public/wasm --target web'"
+    "container":"docker-compose -f .devcontainer/docker-compose.yml up --build"
   },
   "dependencies": {
-    "app-root-path": "^2.2.1",
-    "express": "^4.17.1",
-    "redis": "^2.8.0"
+    "app-root-path": "",
+    "express": "",
+    "redis": ""
   },
   "private": true
 }

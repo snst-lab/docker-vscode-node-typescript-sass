@@ -40,9 +40,11 @@ RUN set -xe \
 # See: https://github.com/systemd/systemd/blob/aa0c34279ee40bce2f9681b496922dedbadfca19/src/basic/virt.c#L434
 RUN mkdir -p /run/systemd && echo 'docker' > /run/systemd/container
 
+RUN echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf > /dev/null
+
 # Configure apt and install packages
 RUN apt-get update && \
-    yes | apt-get upgrade && \
+    # yes | apt-get upgrade && \
     yes | apt-get install \
     bash \
     npm \
