@@ -15,8 +15,10 @@
   "homepage": "https://github.com/%USERNAME%/%PROJECTNAME%#readme",
   "postinstall": "./bin/node-prune.exe",
   "devDependencies": {
+    "@types/app-root-path": "",
     "@types/express": "",
     "@types/node": "",
+    "@types/redis": "",
     "browser-sync": "",
     "del": "",
     "gulp": "",
@@ -27,7 +29,7 @@
     "tslint": "",
     "tslint-loader": "",
     "typescript": "",
-    "webpack": "4.17.1", 
+    "webpack": "4.17.1",
     "webpack-cli": "",
     "webpack-node-externals": ""
   },
@@ -41,7 +43,8 @@
     "pull:github": "git pull git@github.com:%USERNAME%/%PROJECTNAME%.git master --allow-unrelated-histories",
     "push:heroku": "heroku git:remote -a %PROJECTNAME% && git push heroku master",
     "pull:heroku": "git pull https://git.heroku.com/%PROJECTNAME%.git master --allow-unrelated-histories",
-    "container":"docker-compose -f .devcontainer/docker-compose.yml up --build"
+    "docker:build": "docker-compose -f docker-compose.yml up --build",
+    "docker:login": "docker exec -it"
   },
   "dependencies": {
     "app-root-path": "",

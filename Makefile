@@ -31,7 +31,6 @@ endif
 rebuild:
 	@make npm_install 
 
-
 setup_package_json: ./package.json
 	@sed -e "s/%USERNAME%/$(USER_NAME)/g; s/%PROJECTNAME%/$(PROJECT_NAME)/g;" ./package.json > package.json.master && \
 	mv package.json.master package.json
@@ -72,7 +71,7 @@ download_license: ./doc
 	@make git_init
 
 git_init:
-	@git init && git add -A && git commit --allow-empty -m 'first commit'  && git log
+	@git init && git add -A && git commit --allow-empty -m 'first commit'
 	@make npm_install 
 
 npm_install:./package.json
@@ -81,4 +80,4 @@ npm_install:./package.json
 	@make docker_compose
 
 docker_compose:.devcontainer/docker-compose.yml
-	@docker-compose -f .devcontainer/docker-compose.yml up --build
+	@docker-compose -f ./docker-compose.yml up --build

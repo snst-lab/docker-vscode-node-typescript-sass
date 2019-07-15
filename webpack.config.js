@@ -8,7 +8,7 @@ module.exports = [
 		externals: [ nodeExternals() ],
 		devtool: 'inline-source-map',
 		entry: {
-			'build/server': './src/server.ts'
+			'build/server': './src/server/main.ts'
 		},
 		output: {
 			path: __dirname,

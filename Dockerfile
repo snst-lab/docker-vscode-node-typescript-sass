@@ -1,6 +1,6 @@
 FROM scratch
 # minimum ubuntu image
-ADD .devcontainer/ubuntu-bionic-core-cloudimg-amd64-root.tar.gz /
+ADD ./vender/ubuntu-bionic/ubuntu-bionic-core-cloudimg-amd64-root.tar.gz /
 # verify that the APT lists files do not exist
 RUN [ -z "$(apt-get indextargets)" ]
 # (see https://bugs.launchpad.net/cloud-images/+bug/1699913)
@@ -40,15 +40,13 @@ RUN set -xe \
 # See: https://github.com/systemd/systemd/blob/aa0c34279ee40bce2f9681b496922dedbadfca19/src/basic/virt.c#L434
 RUN mkdir -p /run/systemd && echo 'docker' > /run/systemd/container
 
-RUN echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf > /dev/null
-
 # Configure apt and install packages
 RUN apt-get update && \
     # yes | apt-get upgrade && \
     yes | apt-get install \
-    bash \
+    curl \
+    git \
     npm \
-    nodejs \
-    git
+    nodejs
 WORKDIR /home
 SHELL ["/bin/bash", "-c"]
