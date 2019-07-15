@@ -1,29 +1,15 @@
 {
-  "name": "%PROJECTNAME%",
+  "name": "docker_web_app",
   "version": "1.0.0",
-  "description": "",
-  "author": "%USERNAME%",
+  "description": "Node.js on Docker",
+  "author": "First Last <first.last@example.com>",
   "license": "Apache-2.0",
   "main": "build/server.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/%USERNAME%/%PROJECTNAME%.git"
-  },
-  "bugs": {
-    "url": "https://github.com/%USERNAME%/%PROJECTNAME%/issues"
-  },
-  "homepage": "https://github.com/%USERNAME%/%PROJECTNAME%#readme",
-  "postinstall": "./bin/node-prune.exe",
   "devDependencies": {
     "@types/app-root-path": "",
     "@types/express": "",
     "@types/node": "",
     "@types/redis": "",
-    "browser-sync": "",
-    "del": "",
-    "gulp": "",
-    "gulp-plumber": "",
-    "gulp-sass": "",
     "path": "",
     "ts-loader": "",
     "tslint": "",
@@ -36,13 +22,6 @@
   "scripts": {
     "start": "node build/server.js",
     "build": "webpack",
-    "wasm": "sh -c 'bin/wasm-pack.exe build src/public/wasm --target web'",
-    "commit": "git add -A && git commit",
-    "cancel": "git reset --soft HEAD^",
-    "push:github": "git remote rm origin && git remote add origin git@github.com:%USERNAME%/%PROJECTNAME%.git && git push origin master",
-    "pull:github": "git pull git@github.com:%USERNAME%/%PROJECTNAME%.git master --allow-unrelated-histories",
-    "push:heroku": "heroku git:remote -a %PROJECTNAME% && git push heroku master",
-    "pull:heroku": "git pull https://git.heroku.com/%PROJECTNAME%.git master --allow-unrelated-histories",
     "docker:build": "docker-compose -f docker-compose.yml up --build",
     "docker:login": "docker exec -it"
   },

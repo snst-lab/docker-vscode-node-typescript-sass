@@ -336,7 +336,3 @@ out
 # Node modules
 /node_modules/*
 package-lock.json
-
-# Archive directory and the working directory other than coding
-/.archive/*
-/.work/*

@@ -42,7 +42,6 @@ RUN mkdir -p /run/systemd && echo 'docker' > /run/systemd/container
 
 # Configure apt and install packages
 RUN apt-get update && \
-    # yes | apt-get upgrade && \
     yes | apt-get install \
     curl \
     git \
