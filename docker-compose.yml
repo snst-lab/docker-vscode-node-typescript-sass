@@ -9,7 +9,7 @@ services:
       - .:/home
     ports:     
        - 3000:3000
-    command: node build/server.js
+    command: sh -c 'npm install & node build/server.js'
     links:
       - "redis"
   redis:

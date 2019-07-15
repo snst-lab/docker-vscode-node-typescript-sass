@@ -22,6 +22,7 @@
   "scripts": {
     "start": "node build/server.js",
     "build": "webpack",
+    "commit": "git add -A && git commit",
     "docker:build": "docker-compose -f docker-compose.yml up --build",
     "docker:login": "docker exec -it"
   },
