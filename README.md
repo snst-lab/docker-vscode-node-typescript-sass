@@ -17,7 +17,7 @@ Follow these steps to open this sample in a container:
 2. If you're not yet in a development container:
    - Clone this repository.
    ```sh
-     git clone https://github.com/snst-lab/vscode-remote-try-node
+     git clone https://github.com/snst-lab/vscode-remote-try-node-typescript-redis
    ```
    - Run command below to launch container 
    ```sh

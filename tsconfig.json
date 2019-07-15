@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "sourceMap": false,
+        "sourceMap": true,
         "target": "es5",
         "lib": ["dom","es6","es2015.core"],
         "outDir": "build/public/script",

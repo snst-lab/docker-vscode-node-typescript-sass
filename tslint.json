@@ -111,7 +111,6 @@
         "comment-format": [ true, "check-space", "check-uppercase" ],
         "completed-docs": [ true, "classes"],
         "encoding": true,
-        "file-header": [ false, "Copyright (c) \\d{4} TANUSUKE" ],
         "import-spacing": true,
         "interface-name": [ true, "never-prefix" ],
         "interface-over-type-literal": true,
